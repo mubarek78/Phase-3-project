@@ -1,0 +1,56 @@
+.body {
+  min-height: 100vh;
+  padding-bottom: 10px;
+}
+
+.body.light {
+  background-color: #ddd;
+  color: #222;
+}
+
+.body.dark {
+  background-color: #393d46;
+  color: #222;
+}
+
+.carddd:hover {
+  transform: scale(1.05);
+  box-shadow: 5 5 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.carddd {
+  box-shadow: 5px 5px 10px;
+  border-radius: 2.5%;
+}
+
+.rightleft {
+  display: flex;
+}
+
+.navbarr:hover {
+  text-shadow: 2px 2px 5px;
+}
+
+.footer {
+  margin-top: 25px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .rightleft {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  .rightleft .right {
+    margin-top: 40px;
+  }
+
+  .rightleft .left {
+    justify-content: center;
+    display: flex;
+  }
+}
