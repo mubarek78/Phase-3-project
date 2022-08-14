@@ -12,8 +12,15 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/movies' do
-    msg = Movie.create body: params[:body], username: params[:username]
-    msg.to_json
+    movie = Movie.create(
+      title: params[:title],
+      year: params[:year],
+      directedby: params[:directedby],
+      price: params[:price]
+     
+    )
+    movie.to_json
+  
   end
 
   patch '/movies/:id' do
@@ -28,6 +35,10 @@ class ApplicationController < Sinatra::Base
     Movie.destroy params[:id]
   end
   
+
+  get '/reviews' do
+    Review.all.to_json
+  end
 
   post '/reviews' do
     review = Review.create(

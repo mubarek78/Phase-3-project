@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { addDoc, serverTimestamp } from "firebase/firestore";
-import { movieCollectionRef } from "../lib/firestore.collections";
 import Navbar from "./Navbar";
 import { useTheme } from "../context/ThemeContext";
 
@@ -8,31 +6,32 @@ export default function AddMovie() {
   const { theme } = useTheme();
 
   const [name, setName] = useState([]);
-  const [img, setImg] = useState("");
+  const [Year, setYear] = useState("");
   const [comment, setComment] = useState("");
-  const [Recommender, setRecommender] = useState("");
+  const [Director, setDirector] = useState("");
 
   const colorr = theme === "dark" && "rgb(235, 235, 235)";
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (name === "" || img === "" || comment === "" || Recommender === "") {
+    if (name === "" || Year === "" || comment === "" || Director === "") {
       return window.alert("You cannot leave the fields blank.");
     }
-    fetch("http://localhost:9292/reviews", {
+    fetch("http://localhost:9292/movies", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        comment: comment,
-        score: 4,
-        user_id: 1,
-        movie_id: 1,
+        title: name,
+        year: Year,
+        directedby: Director,
+        price: 50
       }),
     })
       .then((r) => r.json())
-      .then((newReview) => newReview);
+      .then((newMovie) => newMovie);
+      console.log("submited")
   }
 
 
@@ -41,7 +40,7 @@ export default function AddMovie() {
       <Navbar />
       <form className="container mt-5" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label style={{ color: colorr }}>Movie Name:</label>
+          <label style={{ color: colorr }}>Movie title:</label>
           <input
             type="text"
             className="form-control"
@@ -51,24 +50,24 @@ export default function AddMovie() {
           />
         </div>
         <div className="form-group">
-          <label style={{ color: colorr }}>Movie Image (URL):</label>
+          <label style={{ color: colorr }}>Year:</label>
           <input
-            type="text"
-            placeholder="You should add image url on this area"
+            type="number"
+            placeholder="Year"
             className="form-control"
-            value={img}
+            value={Year}
             id="img"
-            onChange={(e) => setImg(e.target.value)}
+            onChange={(e) => setYear(e.target.value)}
           />
         </div>
         <div className="form-group">
-          <label style={{ color: colorr }}>Your Name, Surname:</label>
+          <label style={{ color: colorr }}>Directed By:</label>
           <input
             type="text"
             className="form-control"
-            value={Recommender}
+            value={Director}
             id="Recommended"
-            onChange={(e) => setRecommender(e.target.value)}
+            onChange={(e) => setDirector(e.target.value)}
           />
         </div>
         <div className="form-group">

@@ -19,7 +19,7 @@ function Footer() {
         >
           Developed by{" "}
           <a
-            href="https://www.linkedin.com/in/tayfundagci/"
+            href="https://www.linkedin.com"
             style={{
               fontWeight: "bold",
               textDecoration: "none",
@@ -27,11 +27,11 @@ function Footer() {
             }}
             target="blank"
           >
-            Tayfun Dagci
+            Mubarek
           </a>
         </span>
         <label style={{ marginLeft: "10px" }}>
-          <a href="https://www.github.com/tayfundagci/" target="blank">
+          <a href="https://github.com/mubarek78" target="blank">
             <BsGithub
               size={"25"}
               style={{ textDecoration: "none", color: colorr }}
@@ -39,7 +39,7 @@ function Footer() {
           </a>
           <a
             className="ms-2"
-            href="https://www.linkedin.com/in/tayfundagci/"
+            href="https://www.linkedin.com"
             target="blank"
           >
             <AiFillLinkedin size={"30"} style={{ color: colorr }} />

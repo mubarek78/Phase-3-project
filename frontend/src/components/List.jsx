@@ -1,21 +1,16 @@
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
-
 import { useState, useEffect } from "react";
 
 
-import { useTheme } from "../context/ThemeContext";
-
 function List() {
-  const { theme } = useTheme();
+ 
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
   const [render, setRender] = useState(false)
-  const [isEditing, setIsEditing] = useState(false);
+  
 
-  const borderr = theme === "dark" && "rgb(150, 150, 150)";
-  const colorr = theme === "dark" && "rgb(200, 200, 200)";
-  const cardd = theme === "dark" && "#212529";
+
 
 
 
@@ -36,38 +31,6 @@ useEffect(() => {
   }
 
 
-  // function handleUpdateMessage(updatedMessageObj) {
-  //   const updatedMessages = messages.map((message) => {
-  //     if (message.id === updatedMessageObj.id) {
-  //       return updatedMessageObj;
-  //     } else {
-  //       return message;
-  //     }
-  //   });
-  //   setMessages(updatedMessages);
-  // }
-
-
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-
-  function handleFormSubmit(e) {
-    e.preventDefault();
-
-    fetch(`http://localhost:9292/movies/10`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: title,
-        price: price,
-      }),
-    })
-      // .then((r) => r.json())
-      // .then((updatedMessage) => onUpdateMessage(updatedMessage));
-  }
-
 
 
   return (
@@ -82,8 +45,8 @@ useEffect(() => {
               className="card carddd ps-2 pt-2 pe-2 border-2 m-3   "
               style={{
                 width: "18rem",
-                color: borderr,
-                backgroundColor: cardd,
+                // color: borderr,
+                // backgroundColor: cardd,
               }}
             >
               <img
@@ -99,7 +62,7 @@ useEffect(() => {
               <div className="card-body">
                 <h5
                   className="card-title text-center"
-                  style={{ color: colorr }}
+                  // style={{ color: colorr }}
                 >
                    {movie.title}
               
@@ -111,13 +74,13 @@ useEffect(() => {
                         color: "orangered",
                       }}
                     >
-                      X
+                      Delete
                     </button>
-                    <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                    {/* <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
             <span role="img" aria-label="edit">
-              ✏️
+              Edit
             </span>
-          </button>
+          </button> */}
                 </h5>
 
                 <Link
@@ -136,25 +99,6 @@ useEffect(() => {
         </div>
       </div>
     </div>
-
-
- {isEditing && <form className="edit-message" onSubmit={handleFormSubmit}>
-      <input
-        type="text"
-        name="title"
-        autoComplete="off"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="number"
-        name="price"
-        autoComplete="off"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
-      <input type="submit" value="Save" />
-    </form>}
     </>
   );
 }
