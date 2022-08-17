@@ -8,13 +8,13 @@ function MovieDetail() {
 
   const borderr = theme === "dark" && "rgb(150, 150, 150)";
   const colorr = theme === "dark" && "rgb(200, 200, 200)";
-  const commentt = theme === "dark" && "rgb(255, 255, 255)";
   const cardd = theme === "dark" && "#212529";
 
   let { movie_id } = useParams();
 
   const [movie, setMovie] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [showReviews, setshowReviews] = useState(false);
   const [comment, setComent] = useState('');
   const [score, setScore] = useState('');
 
@@ -91,6 +91,11 @@ console.log(movie.reviews)
                         Edit
                        </span>
                       </button>
+                      <button onClick={() => setshowReviews((showReviews) => !showReviews)}>
+                      <span role="img" aria-label="edit">
+                        Reviews
+                       </span>
+                      </button>
                       {/* <h5>score: {((movie.reviews.reduce((prev, cur) => prev + cur.score, 0))/movie.reviews.length)}</h5> */}
                       
                     </div>
@@ -124,7 +129,7 @@ console.log(movie.reviews)
     </form>}
     </div>
     <h4>Reviews</h4>
-    {isEditing && movie.reviews.map((review) => (
+    {showReviews && movie.reviews.map((review) => (
     <>
     <p>Comment: {review.comment}</p>
     <p>Score: {review.score}</p>

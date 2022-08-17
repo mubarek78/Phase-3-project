@@ -31,7 +31,7 @@ export default function AddMovie() {
     })
       .then((r) => r.json())
       .then((newMovie) => newMovie);
-      console.log("submited")
+      alert("submited")
   }
 
 

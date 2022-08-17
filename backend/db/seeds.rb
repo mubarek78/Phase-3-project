@@ -11,7 +11,8 @@ puts "🌱 Seeding data..."
     title: Faker::Movie.title,
     year: rand(1980..2022),
     directedby: Faker::Name.first_name,
-    price: rand(50..600) 
+    price: rand(50..600),
+    image_url: Faker::LoremFlickr.image(size: "50x60", search_terms: ['movies'], match_all: true) #=> "https://loremflickr.com/50/60/sports,fitness/all"
   )
 
   # create between 1 and 5 reviews for each movie
